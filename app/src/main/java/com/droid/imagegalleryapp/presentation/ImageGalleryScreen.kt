@@ -3,6 +3,7 @@ package com.droid.imagegalleryapp.presentation
 import android.content.ContentUris
 import android.provider.MediaStore
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -13,6 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.droid.imagegalleryapp.Image
 import com.droid.imagegalleryapp.components.ImageItem
@@ -85,7 +87,9 @@ fun ImageGalleryScreen(
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(if (windowInfo.screenWidthInfo is WindowInfo.WindowType.Compact) 2 else 4),
-        modifier = modifier.fillMaxSize()
+        modifier = modifier
+            .fillMaxSize()
+            .padding(8.dp)
     ) {
         items(
             items = images,

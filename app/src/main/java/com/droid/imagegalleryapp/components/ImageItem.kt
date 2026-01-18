@@ -25,6 +25,7 @@ fun ImageItem(
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(2.dp)
             .clickable(onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
