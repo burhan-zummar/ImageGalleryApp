@@ -3,8 +3,9 @@ package com.droid.imagegalleryapp.presentation
 import android.content.ContentUris
 import android.provider.MediaStore
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -15,6 +16,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.droid.imagegalleryapp.Image
 import com.droid.imagegalleryapp.components.ImageItem
+import com.droid.imagegalleryapp.components.RememberWindowInfo
+import com.droid.imagegalleryapp.components.WindowInfo
 
 @Composable
 fun ImageGalleryScreen(
@@ -74,19 +77,24 @@ fun ImageGalleryScreen(
 
     val images by viewModel.images.collectAsState()
     val listState = rememberLazyListState()
+    val windowInfo = RememberWindowInfo()
 
     LaunchedEffect(images.size) {
         listState.animateScrollToItem(0)
     }
 
-    LazyColumn(
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(if (windowInfo.screenWidthInfo is WindowInfo.WindowType.Compact) 2 else 4),
         modifier = modifier.fillMaxSize()
     ) {
         items(
             items = images,
             key = { image -> image.id }
         ) { image ->
-            ImageItem(image)
+            ImageItem(
+                image,
+                onClick = { /* Handle image click */ }
+            )
         }
     }
 }
