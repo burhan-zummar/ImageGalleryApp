@@ -2,7 +2,10 @@
 
 A modern Android application built to demonstrate best practices in app development using Jetpack Compose, Clean Architecture, and MVVM. The app loads images from the device's local storage and displays them in a responsive grid, featuring infinite scrolling with pagination.
 
-![Image Gallery App Screenshot]
+[Image Gallery App Screenshot]
+<img width="1080" height="2340" alt="Screenshot_20260119_110347" src="https://github.com/user-attachments/assets/d410a398-c1b5-42d3-8231-ee25a7bdfbbc" />
+<img width="2340" height="1080" alt="Screenshot_20260119_110412" src="https://github.com/user-attachments/assets/a7db6e94-9abd-4800-a8a4-b54d13597c81" />
+
 
 ---
 
