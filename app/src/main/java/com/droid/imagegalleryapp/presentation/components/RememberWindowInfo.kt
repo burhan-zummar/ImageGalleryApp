@@ -1,4 +1,4 @@
-package com.droid.imagegalleryapp.components
+package com.droid.imagegalleryapp.presentation.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration

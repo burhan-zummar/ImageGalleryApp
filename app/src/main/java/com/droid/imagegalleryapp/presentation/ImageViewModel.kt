@@ -5,12 +5,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.droid.imagegalleryapp.Image
+import androidx.lifecycle.viewModelScope
+import com.droid.imagegalleryapp.data.ImageRepository
+import com.droid.imagegalleryapp.domain.Image
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
-class ImageViewModel : ViewModel() {
+class ImageViewModel(
+    private val repository: ImageRepository
+) : ViewModel() {
     companion object {
         private const val TAG = "ImageViewModel"
     }
@@ -27,18 +32,29 @@ class ImageViewModel : ViewModel() {
 
     var isLoading by mutableStateOf(false)
 
-    fun appendImages(newImages: List<Image>) {
+    fun loadNextPage() {
+        Log.e(TAG, "loadNextPage: $currentPage")
+        if (!canPaginate || isLoading) return
+        isLoading = true
+
+        viewModelScope.launch {
+            val newImages = repository.getImages(currentPage)
+            appendImages(newImages)
+            isLoading = false
+        }
+    }
+
+    // This function is now private as it's an implementation detail
+    private fun appendImages(newImages: List<Image>) {
         Log.e(TAG, "appendImages: ${newImages.size}")
         if (newImages.isEmpty()) {
             canPaginate = false
         } else {
             _images.update { currentImages ->
-                // Add new images and remove duplicates
                 (currentImages + newImages).distinctBy { it.id }
             }
-            currentPage++ // Increment page number
+            currentPage++
         }
-        isLoading = false
     }
 
     // To handle end of loading

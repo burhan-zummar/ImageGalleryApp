@@ -13,7 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.droid.imagegalleryapp.components.ReadMediaPermission
+import com.droid.imagegalleryapp.presentation.components.ReadMediaPermission
 import com.droid.imagegalleryapp.presentation.ImageGalleryScreen
 import com.droid.imagegalleryapp.ui.theme.ImageGalleryAppTheme
 

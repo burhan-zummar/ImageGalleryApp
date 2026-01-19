@@ -1,4 +1,4 @@
-package com.droid.imagegalleryapp.components
+package com.droid.imagegalleryapp.presentation.components
 
 import android.Manifest
 import android.content.pm.PackageManager

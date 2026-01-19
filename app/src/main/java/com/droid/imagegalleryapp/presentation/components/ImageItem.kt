@@ -1,4 +1,4 @@
-package com.droid.imagegalleryapp.components
+package com.droid.imagegalleryapp.presentation.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import com.droid.imagegalleryapp.Image
+import com.droid.imagegalleryapp.domain.Image
 
 @Composable
 fun ImageItem(

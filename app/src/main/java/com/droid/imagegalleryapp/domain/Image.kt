@@ -1,4 +1,4 @@
-package com.droid.imagegalleryapp
+package com.droid.imagegalleryapp.domain
 
 import android.net.Uri
 
